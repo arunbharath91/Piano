@@ -35,12 +35,11 @@ export class Piano {
     this.projectTemplate();
     document.addEventListener('keydown', (e: any) => {
       if (e.repeat) return;
-      const index = this.options.notes?.findIndex(x => x.keyboardNotes === e.key);
-      if (index !== undefined && this.options.notes) {
+      const index = this.options.notes?.findIndex(x => x.keyboardNotes === e.key.toLowerCase());
+      if (index !== -1 && index !== undefined && this.options.notes) {
         this.playNote(this.options.notes[index].note);
-        console.log(this.options.notes[index].note)
       }
-    })
+    });
   }
 
   protected projectTemplate() {
