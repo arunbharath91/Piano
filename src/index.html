@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+  <title>Paino</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="theme-color" content="#2c58ed" />
+  <meta name="description" content="Paino by Arun Bharath" />
+  <meta name="keywords" content="Paino by Arun Bharath">
+  <meta name="author" content="Arun Bharath">
+  <link rel="shortcut icon" href="../../assets/images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <main>
+    <div class="container" style="padding-top:15px">
+      <div class="row">
+        <pre>
+          <code>
+          configuration :
+          1) supports mutiple instance
+          2) const options: IOptions = {
+            notes: [
+                { note: 'C', keycolor: 'white', keyboardNotes: 'z' },
+                { note: 'Db', keycolor: 'black', keyboardNotes: 's' },
+                { note: 'D', keycolor: 'white', keyboardNotes: 'x' }
+            ]
+           }
+          3) configuration : const piano = new Piano('#piano', options);
+          4) if option not passed defaultOption will be taken, refer paino.ts
+          </code>
+          </pre>
+        <hr />
+        <h1>Paino</h1>
+        <div class="col-md-12">
+          <div class="piano-container" id="piano">
+
+          </div>
+  </main>
+
+</body>
+
+</html>
