@@ -45,21 +45,17 @@ export class Piano {
 
   protected projectTemplate() {
     const piano = document.createElement('piano');
-    const audioList = document.createElement('audio-list');
+    let audioList = '';
     this.options.notes?.forEach((n, i) => {
       const noteElem = document.createElement('div');
       noteElem.setAttribute('data-note', n.note);
       noteElem.classList.add(...['key', n.keycolor]);
       noteElem.innerHTML = `${n.keyboardNotes}`
       piano.appendChild(noteElem);
-      const audio = document.createElement('audio');
-      audio.src = `assets/notes/${n.note}.${this.options.audioType}`;
-      audio.setAttribute('id', `${n.note}`);
-      audioList.appendChild(audio);
-      audio.load();
+      audioList += `<audio id="${n.note}" src="assets/notes/${n.note}.${this.options.audioType}"></audio>`;
       noteElem.addEventListener('click', () => this.playNote(n.note))
     });
-    piano.appendChild(audioList);
+    piano.insertAdjacentHTML('beforeend', audioList);
     this.selector.appendChild(piano);
   }
 
