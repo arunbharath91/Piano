@@ -45,24 +45,27 @@ export class Piano {
 
   protected projectTemplate() {
     const piano = document.createElement('piano');
-    let audio = '';
+    const audioList = document.createElement('audio-list');
     this.options.notes?.forEach((n, i) => {
       const noteElem = document.createElement('div');
       noteElem.setAttribute('data-note', n.note);
       noteElem.classList.add(...['key', n.keycolor]);
       noteElem.innerHTML = `${n.keyboardNotes}`
       piano.appendChild(noteElem);
-      audio += `<audio id="${n.note}" src="assets/notes/${n.note}.${this.options.audioType}"></audio>`;
+      const audio = document.createElement('audio');
+      audio.src = `assets/notes/${n.note}.${this.options.audioType}`;
+      audio.setAttribute('id', `${n.note}`);
+      audioList.appendChild(audio);
+      audio.load();
       noteElem.addEventListener('click', () => this.playNote(n.note))
     });
-    piano.insertAdjacentHTML('beforeend', audio);
+    piano.appendChild(audioList);
     this.selector.appendChild(piano);
   }
 
   playNote(note: string) {
     const noteAudio = this.selector.querySelector<HTMLAudioElement>(`#${note}`);
     const noteElem = this.selector.querySelector<HTMLDivElement>(`[data-note='${note}']`);
-    console.log(noteElem)
     if (noteAudio && noteElem) {
       noteAudio.currentTime = 0;
       noteAudio.play()
