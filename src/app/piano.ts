@@ -52,7 +52,7 @@ export class Piano {
       noteElem.classList.add(...['key', n.keycolor]);
       noteElem.innerHTML = `${n.keyboardNotes}`
       piano.appendChild(noteElem);
-      audioList += `<audio id="${n.note}" src="assets/notes/${n.note}.${this.options.audioType}"></audio>`;
+      audioList += `<audio id="${n.note}" preload="auto" src="assets/notes/${n.note}.${this.options.audioType}"></audio>`;
       noteElem.addEventListener('click', () => this.playNote(n.note))
     });
     piano.insertAdjacentHTML('beforeend', audioList);
