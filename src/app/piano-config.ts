@@ -1,2 +1,2 @@
-import { IOptions, Piano } from "./piano";
+import { Piano } from "./piano";
 const piano = new Piano('#piano');

@@ -1,5 +1,6 @@
 export interface IOptions {
   notes?: notes[];
+  audioType?: string
 }
 
 interface notes {
@@ -21,7 +22,8 @@ const defaultOption: IOptions = {
     { note: 'A', keycolor: 'white', keyboardNotes: 'n' },
     { note: 'Bb', keycolor: 'black', keyboardNotes: 'j' },
     { note: 'B', keycolor: 'white', keyboardNotes: 'm' }
-  ]
+  ],
+  audioType: 'wav'
 }
 
 export class Piano {
@@ -50,7 +52,7 @@ export class Piano {
       noteElem.classList.add(...['key', n.keycolor]);
       noteElem.innerHTML = `${n.keyboardNotes}`
       piano.appendChild(noteElem);
-      audio += `<audio id="${n.note}" src="assets/notes/${n.note}.mp3"></audio>`;
+      audio += `<audio id="${n.note}" src="assets/notes/${n.note}.${this.options.audioType}"></audio>`;
       noteElem.addEventListener('click', () => this.playNote(n.note))
     });
     piano.insertAdjacentHTML('beforeend', audio);
