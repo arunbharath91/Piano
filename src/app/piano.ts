@@ -18,6 +18,7 @@ const defaultOption: IOptions = {
     { note: 'E', keycolor: 'white', keyboardNotes: 'c' },
     { note: 'F', keycolor: 'white', keyboardNotes: 'v' },
     { note: 'Gb', keycolor: 'black', keyboardNotes: 'g' },
+    { note: 'G', keycolor: 'white', keyboardNotes: 'b' },
     { note: 'Ab', keycolor: 'black', keyboardNotes: 'h' },
     { note: 'A', keycolor: 'white', keyboardNotes: 'n' },
     { note: 'Bb', keycolor: 'black', keyboardNotes: 'j' },
@@ -61,6 +62,7 @@ export class Piano {
   playNote(note: string) {
     const noteAudio = this.selector.querySelector<HTMLAudioElement>(`#${note}`);
     const noteElem = this.selector.querySelector<HTMLDivElement>(`[data-note='${note}']`);
+    console.log(noteElem)
     if (noteAudio && noteElem) {
       noteAudio.currentTime = 0;
       noteAudio.play()
